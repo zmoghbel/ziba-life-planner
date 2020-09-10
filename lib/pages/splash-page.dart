@@ -18,7 +18,10 @@ import 'home-page.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(milliseconds: 4000), () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context)=> HomePage())));
+    Timer(
+        Duration(milliseconds: 1000),
+        () => Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (BuildContext context) => HomePage())));
     return Scaffold(
       body: Container(
           child: Stack(
