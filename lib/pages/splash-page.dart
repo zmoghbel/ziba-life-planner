@@ -37,7 +37,7 @@ class SplashPage extends StatelessWidget {
           ),
           Container(
             width: 250,
-            height: 300,
+            height: 350,
             child: Center(
               child: Shimmer.fromColors(
                 baseColor: Colors.blueGrey[900],
@@ -47,7 +47,7 @@ class SplashPage extends StatelessWidget {
                     Text(
                       'Ziba',
                       style: TextStyle(
-                          fontSize: 70,
+                          fontSize: 45,
                           fontFamily: 'Pacifico',
                           shadows: <Shadow>[
                             Shadow(
@@ -60,7 +60,7 @@ class SplashPage extends StatelessWidget {
                     Text(
                       'Life-Planner',
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 20,
                           fontFamily: 'Pacifico',
                           shadows: <Shadow>[
                             Shadow(
