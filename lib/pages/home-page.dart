@@ -37,49 +37,53 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Image(
-            image: AssetImage('assets/img/background.png'),
-            fit: BoxFit.fill,
-            height: double.infinity,
-            width: double.infinity,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              right: 35.0,
-              left: 8.0,
-              top: 20.0,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Image(
+              image: AssetImage('assets/img/background.png'),
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
             ),
-            child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TableCalendar(
-                  events: _events,
-                  calendarController: _controller,
-                  onDaySelected: (date, event) {
-                    print(
-                      date.toIso8601String(),
-                    );
-                  },
-                  headerStyle: HeaderStyle(
-                    formatButtonShowsNext: false,
-                  ),
-                  startingDayOfWeek: StartingDayOfWeek.monday,
-                  calendarStyle: CalendarStyle(
-                    todayStyle: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                      color: Colors.green[600],
+            Container(
+              //color: Colors.yellow,
+              margin: EdgeInsets.only(
+                left: 8.0,
+                right: 40,
+                top: 20.0,
+                bottom: 22.0,
+              ),
+              child: Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TableCalendar(
+                    events: _events,
+                    calendarController: _controller,
+                    onDaySelected: (date, event) {
+                      print(
+                        date.toIso8601String(),
+                      );
+                    },
+                    headerStyle: HeaderStyle(
+                      formatButtonShowsNext: false,
                     ),
-                    todayColor: Color(0xFFFFFFFF),
-                    selectedColor: Theme.of(context).primaryColor,
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    calendarStyle: CalendarStyle(
+                      todayStyle: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                        color: Colors.green[600],
+                      ),
+                      todayColor: Color(0xFFFFFFFF),
+                      selectedColor: Theme.of(context).primaryColor,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
