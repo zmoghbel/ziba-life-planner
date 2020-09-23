@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
                 //crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TableCalendar(
+                    //availableCalendarFormats: CalendarFormat.day,
                     events: _events,
                     calendarController: _controller,
                     onDaySelected: (date, event) {
@@ -77,6 +78,77 @@ class _HomePageState extends State<HomePage> {
                       ),
                       todayColor: Color(0xFFFFFFFF),
                       selectedColor: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      RaisedButton(
+                        color: Colors.yellow[100],
+                        child: Text('Tasks'),
+                        onPressed: () {
+                          setState(() {
+                            debugPrint(
+                              'Tasks was tapped',
+                            );
+                          });
+                        },
+                      ),
+                      RaisedButton(
+                        color: Colors.yellow[100],
+                        child: Text('Events'),
+                        onPressed: () {
+                          setState(() {
+                            debugPrint(
+                              'Events was tapped',
+                            );
+                          });
+                        },
+                      ),
+                      RaisedButton(
+                        color: Colors.yellow[100],
+                        child: Text('Notes'),
+                        onPressed: () {
+                          setState(() {
+                            debugPrint(
+                              'Notes was tapped',
+                            );
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                    ),
+                    child: Column(
+                      children: [
+                        Card(
+                          child: ListTile(
+                            title: Text("Task 1........."),
+                            leading: Icon(Icons.check_box),
+                            onTap: () {
+                              setState(() {
+                                print('Task 1 was tapped');
+                              });
+                            },
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            //tileColor: Colors.green,
+                            title: Text("Task 2........."),
+                            leading: Icon(Icons.check_box),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title: Text("Task 3........."),
+                            leading: Icon(Icons.check_box),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
