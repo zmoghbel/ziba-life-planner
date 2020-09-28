@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:ziba_life_planner/pages/events.dart';
+import 'package:ziba_life_planner/pages/tab-buttons.dart';
+import 'package:ziba_life_planner/pages/notes.dart';
+import 'package:ziba_life_planner/pages/tasks.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,13 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  CalendarController _controller;
+  CalendarController _calendarController;
   Map<DateTime, List<dynamic>> _events;
 
   @override
   void initState() {
     super.initState();
-    _controller = CalendarController();
+    _calendarController = CalendarController();
     _events = {};
   }
 
@@ -35,6 +39,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _pageController = PageController();
     return Scaffold(
       //backgroundColor: Colors.white,
       body: SafeArea(
@@ -60,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                   TableCalendar(
                     //availableCalendarFormats: CalendarFormat.day,
                     events: _events,
-                    calendarController: _controller,
+                    calendarController: _calendarController,
                     onDaySelected: (date, event) {
                       print(
                         date.toIso8601String(),
@@ -80,74 +85,14 @@ class _HomePageState extends State<HomePage> {
                       selectedColor: Theme.of(context).primaryColor,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RaisedButton(
-                        color: Colors.yellow[100],
-                        child: Text('Tasks'),
-                        onPressed: () {
-                          setState(() {
-                            debugPrint(
-                              'Tasks was tapped',
-                            );
-                          });
-                        },
-                      ),
-                      RaisedButton(
-                        color: Colors.yellow[100],
-                        child: Text('Events'),
-                        onPressed: () {
-                          setState(() {
-                            debugPrint(
-                              'Events was tapped',
-                            );
-                          });
-                        },
-                      ),
-                      RaisedButton(
-                        color: Colors.yellow[100],
-                        child: Text('Notes'),
-                        onPressed: () {
-                          setState(() {
-                            debugPrint(
-                              'Notes was tapped',
-                            );
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                    ),
-                    child: Column(
-                      children: [
-                        Card(
-                          child: ListTile(
-                            title: Text("Task 1........."),
-                            leading: Icon(Icons.check_box),
-                            onTap: () {
-                              setState(() {
-                                print('Task 1 was tapped');
-                              });
-                            },
-                          ),
-                        ),
-                        Card(
-                          child: ListTile(
-                            //tileColor: Colors.green,
-                            title: Text("Task 2........."),
-                            leading: Icon(Icons.check_box),
-                          ),
-                        ),
-                        Card(
-                          child: ListTile(
-                            title: Text("Task 3........."),
-                            leading: Icon(Icons.check_box),
-                          ),
-                        ),
+                  TabButtons(_pageController),
+                  Expanded(
+                    child: PageView(
+                      controller: _pageController,
+                      children: <Widget>[
+                        Tasks(),
+                        Events(),
+                        Notes(),
                       ],
                     ),
                   ),
