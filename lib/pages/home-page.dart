@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -41,112 +43,106 @@ class _HomePageState extends State<HomePage> {
         child: Stack(
           children: [
             Image(
-              image: AssetImage('assets/img/background.png'),
+              image: AssetImage('assets/img/homePage-background.png'),
               fit: BoxFit.fill,
               height: double.infinity,
               width: double.infinity,
             ),
             Container(
               //color: Colors.yellow,
-              margin: EdgeInsets.only(
+              /*margin: EdgeInsets.only(
                 left: 8.0,
                 right: 40,
                 top: 20.0,
                 bottom: 22.0,
-              ),
-              child: Column(
-                //crossAxisAlignment: CrossAxisAlignment.start,
+              ),*/
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  TableCalendar(
-                    //availableCalendarFormats: CalendarFormat.day,
-                    events: _events,
-                    calendarController: _controller,
-                    onDaySelected: (date, event) {
-                      print(
-                        date.toIso8601String(),
-                      );
-                    },
-                    headerStyle: HeaderStyle(
-                      formatButtonShowsNext: false,
-                    ),
-                    startingDayOfWeek: StartingDayOfWeek.monday,
-                    calendarStyle: CalendarStyle(
-                      todayStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
-                        color: Colors.green[600],
-                      ),
-                      todayColor: Color(0xFFFFFFFF),
-                      selectedColor: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      RaisedButton(
-                        color: Colors.yellow[100],
-                        child: Text('Tasks'),
-                        onPressed: () {
-                          setState(() {
-                            debugPrint(
-                              'Tasks was tapped',
-                            );
-                          });
-                        },
-                      ),
-                      RaisedButton(
-                        color: Colors.yellow[100],
-                        child: Text('Events'),
-                        onPressed: () {
-                          setState(() {
-                            debugPrint(
-                              'Events was tapped',
-                            );
-                          });
-                        },
-                      ),
-                      RaisedButton(
-                        color: Colors.yellow[100],
-                        child: Text('Notes'),
-                        onPressed: () {
-                          setState(() {
-                            debugPrint(
-                              'Notes was tapped',
-                            );
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                    ),
+                  Expanded(
+                    flex: 8,
                     child: Column(
+                      children: [],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Card(
-                          child: ListTile(
-                            title: Text("Task 1........."),
-                            leading: Icon(Icons.check_box),
-                            onTap: () {
-                              setState(() {
-                                print('Task 1 was tapped');
-                              });
-                            },
-                          ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: FlatButton(
+                                onPressed: () {},
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red[500],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5.0)),
+                                  ),
+                                  child: RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      'Month View',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        Card(
-                          child: ListTile(
-                            //tileColor: Colors.green,
-                            title: Text("Task 2........."),
-                            leading: Icon(Icons.check_box),
-                          ),
+                        Row(
+                          children: [
+                            Container(
+                              child: FlatButton(
+                                onPressed: () {},
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red[500],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5.0)),
+                                  ),
+                                  child: RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      'month view',
+                                      style: TextStyle(
+                                        color: Colors.white.withOpacity(0.8),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        Card(
-                          child: ListTile(
-                            title: Text("Task 3........."),
-                            leading: Icon(Icons.check_box),
-                          ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.kitchen,
+                              color: Colors.redAccent,
+                              size: 30.0,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.restaurant,
+                              color: Colors.blue,
+                              size: 30.0,
+                            ),
+                          ],
                         ),
                       ],
                     ),
