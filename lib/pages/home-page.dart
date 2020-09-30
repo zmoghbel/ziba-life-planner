@@ -2,6 +2,12 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:ziba_life_planner/pages/tow-week-tag.dart';
+import 'package:ziba_life_planner/pages/week-tag.dart';
+import 'month-tag.dart';
+import 'week-tag.dart';
+import 'day-tag.dart';
+import 'tow-week-tag.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -70,53 +76,10 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: FlatButton(
-                                onPressed: () {},
-                                padding: EdgeInsets.all(0),
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red[500],
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5.0)),
-                                  ),
-                                  child: RotatedBox(
-                                    quarterTurns: 1,
-                                    child: Text(
-                                      'Month View',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.kitchen,
-                              color: Colors.redAccent,
-                              size: 30.0,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.restaurant,
-                              color: Colors.blue,
-                              size: 30.0,
-                            ),
-                          ],
-                        ),
+                        DayTag(),
+                        WeekTag(),
+                        MonthTag(),
+                        TowWeekTag(),
                       ],
                     ),
                   ),
