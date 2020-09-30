@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -75,6 +75,7 @@ class _HomePageState extends State<HomePage> {
                             Expanded(
                               child: FlatButton(
                                 onPressed: () {},
+                                padding: EdgeInsets.all(0),
                                 child: Container(
                                   padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
                                   decoration: BoxDecoration(
@@ -96,34 +97,6 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                              child: FlatButton(
-                                onPressed: () {},
-                                child: Container(
-                                  padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red[500],
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5.0)),
-                                  ),
-                                  child: RotatedBox(
-                                    quarterTurns: 1,
-                                    child: Text(
-                                      'month view',
-                                      style: TextStyle(
-                                        color: Colors.white.withOpacity(0.8),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                         Row(
