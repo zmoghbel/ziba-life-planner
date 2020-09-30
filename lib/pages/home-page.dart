@@ -1,9 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:ziba_life_planner/pages/tow-week-tag.dart';
-import 'package:ziba_life_planner/pages/week-tag.dart';
+import 'package:ziba_life_planner/pages/events.dart';
+import 'package:ziba_life_planner/pages/tab-buttons.dart';
+import 'package:ziba_life_planner/pages/notes.dart';
+import 'package:ziba_life_planner/pages/tasks.dart';
 import 'month-tag.dart';
 import 'week-tag.dart';
 import 'day-tag.dart';
