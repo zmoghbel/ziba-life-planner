@@ -7,7 +7,7 @@ import 'package:ziba_life_planner/pages/tasks.dart';
 import 'month-tag.dart';
 import 'week-tag.dart';
 import 'day-tag.dart';
-import 'tow-week-tag.dart';
+import 'two-week-tag.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -46,6 +46,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final _pageController = PageController();
+    DateTime now = new DateTime.now();
+
     return Scaffold(
       //backgroundColor: Colors.white,
       body: SafeArea(
@@ -114,10 +116,67 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        DayTag(),
-                        WeekTag(),
-                        MonthTag(),
-                        TowWeekTag(),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: FlatButton(
+                                onPressed: () {
+                                  setState(() {});
+                                },
+                                padding: EdgeInsets.all(0),
+                                child: DayTag(),
+                              ),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: FlatButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _calendarController
+                                        .setCalendarFormat(CalendarFormat.week);
+                                  });
+                                },
+                                padding: EdgeInsets.all(0),
+                                child: WeekTag(),
+                              ),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: FlatButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _calendarController.setCalendarFormat(
+                                        CalendarFormat.month);
+                                  });
+                                },
+                                padding: EdgeInsets.all(0),
+                                child: MonthTag(),
+                              ),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: FlatButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _calendarController.setCalendarFormat(
+                                        CalendarFormat.twoWeeks);
+                                  });
+                                },
+                                padding: EdgeInsets.all(0),
+                                child: TwoWeekTag(),
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   ),
