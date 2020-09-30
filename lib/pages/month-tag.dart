@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MonthTag extends StatelessWidget {
+class MonthTag extends StatefulWidget {
+  @override
+  _MonthTagState createState() => _MonthTagState();
+}
+
+class _MonthTagState extends State<MonthTag> {
   @override
   Widget build(BuildContext context) {
     return Row(

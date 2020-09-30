@@ -15,13 +15,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  CalendarController _controller;
+  CalendarController _calendarController;
   Map<DateTime, List<dynamic>> _events;
 
   @override
   void initState() {
     super.initState();
-    _controller = CalendarController();
+    _calendarController = CalendarController();
     _events = {};
   }
 
@@ -41,8 +41,11 @@ class _HomePageState extends State<HomePage> {
     return newMap;
   }
 
+  //Writed by zahra on 2020/09/28
+  //Edited by Zeinab on 2020/09/30
   @override
   Widget build(BuildContext context) {
+    final _pageController = PageController();
     return Scaffold(
       //backgroundColor: Colors.white,
       body: SafeArea(
@@ -68,7 +71,42 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     flex: 8,
                     child: Column(
-                      children: [],
+                      children: [
+                        TableCalendar(
+                          //availableCalendarFormats: CalendarFormat.day,
+                          events: _events,
+                          calendarController: _calendarController,
+                          onDaySelected: (date, event) {
+                            print(
+                              date.toIso8601String(),
+                            );
+                          },
+                          headerStyle: HeaderStyle(
+                            formatButtonShowsNext: false,
+                          ),
+                          startingDayOfWeek: StartingDayOfWeek.monday,
+                          calendarStyle: CalendarStyle(
+                            todayStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.0,
+                              color: Colors.green[600],
+                            ),
+                            todayColor: Color(0xFFFFFFFF),
+                            selectedColor: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        TabButtons(_pageController),
+                        Expanded(
+                          child: PageView(
+                            controller: _pageController,
+                            children: <Widget>[
+                              Tasks(),
+                              Events(),
+                              Notes(),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Expanded(
