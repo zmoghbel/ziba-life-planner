@@ -4,10 +4,11 @@ import 'package:ziba_life_planner/pages/events.dart';
 import 'package:ziba_life_planner/pages/tab-buttons.dart';
 import 'package:ziba_life_planner/pages/notes.dart';
 import 'package:ziba_life_planner/pages/tasks.dart';
-import 'month-tag.dart';
-import 'week-tag.dart';
-import 'day-tag.dart';
-import 'two-week-tag.dart';
+import 'package:ziba_life_planner/pages/month-tag.dart';
+import 'package:ziba_life_planner/pages/week-tag.dart';
+import 'package:ziba_life_planner/pages/day-tag.dart';
+import 'package:ziba_life_planner/pages/two-week-tag.dart';
+import 'package:ziba_life_planner/pages/calendar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   CalendarController _calendarController;
   Map<DateTime, List<dynamic>> _events;
+  bool viewCalendar = true;
 
   @override
   void initState() {
@@ -41,12 +43,19 @@ class _HomePageState extends State<HomePage> {
     return newMap;
   }
 
+  showCalendar() {
+    viewCalendar = true;
+  }
+
+  hideCalendar() {
+    viewCalendar = false;
+  }
+
   //Writed by zahra on 2020/09/28
   //Edited by Zeinab on 2020/09/30
   @override
   Widget build(BuildContext context) {
     final _pageController = PageController();
-    DateTime now = new DateTime.now();
 
     return Scaffold(
       //backgroundColor: Colors.white,
@@ -74,29 +83,11 @@ class _HomePageState extends State<HomePage> {
                     flex: 8,
                     child: Column(
                       children: [
-                        TableCalendar(
-                          //availableCalendarFormats: CalendarFormat.day,
-                          events: _events,
-                          calendarController: _calendarController,
-                          onDaySelected: (date, event) {
-                            print(
-                              date.toIso8601String(),
-                            );
-                          },
-                          headerStyle: HeaderStyle(
-                            formatButtonShowsNext: false,
-                          ),
-                          startingDayOfWeek: StartingDayOfWeek.monday,
-                          calendarStyle: CalendarStyle(
-                            todayStyle: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
-                              color: Colors.green[600],
-                            ),
-                            todayColor: Color(0xFFFFFFFF),
-                            selectedColor: Theme.of(context).primaryColor,
-                          ),
-                        ),
+                        (viewCalendar)
+                            ? Calendar(
+                                events: _events,
+                                calendarController: _calendarController)
+                            : CurrentDateBox(),
                         TabButtons(_pageController),
                         Expanded(
                           child: PageView(
@@ -121,7 +112,9 @@ class _HomePageState extends State<HomePage> {
                             Expanded(
                               child: FlatButton(
                                 onPressed: () {
-                                  setState(() {});
+                                  setState(() {
+                                    hideCalendar();
+                                  });
                                 },
                                 padding: EdgeInsets.all(0),
                                 child: DayTag(),
@@ -135,6 +128,7 @@ class _HomePageState extends State<HomePage> {
                               child: FlatButton(
                                 onPressed: () {
                                   setState(() {
+                                    showCalendar();
                                     _calendarController
                                         .setCalendarFormat(CalendarFormat.week);
                                   });
@@ -151,6 +145,7 @@ class _HomePageState extends State<HomePage> {
                               child: FlatButton(
                                 onPressed: () {
                                   setState(() {
+                                    showCalendar();
                                     _calendarController.setCalendarFormat(
                                         CalendarFormat.month);
                                   });
@@ -167,6 +162,7 @@ class _HomePageState extends State<HomePage> {
                               child: FlatButton(
                                 onPressed: () {
                                   setState(() {
+                                    showCalendar();
                                     _calendarController.setCalendarFormat(
                                         CalendarFormat.twoWeeks);
                                   });
