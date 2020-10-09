@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:ziba_life_planner/pages/events.dart';
-import 'package:ziba_life_planner/pages/tab-buttons.dart';
-import 'package:ziba_life_planner/pages/notes.dart';
-import 'package:ziba_life_planner/pages/tasks.dart';
-import 'package:ziba_life_planner/pages/month-tag.dart';
-import 'package:ziba_life_planner/pages/week-tag.dart';
-import 'package:ziba_life_planner/pages/day-tag.dart';
-import 'package:ziba_life_planner/pages/two-week-tag.dart';
-import 'package:ziba_life_planner/pages/calendar.dart';
+import 'package:ziba_life_planner/widgets/events.dart';
+import 'package:ziba_life_planner/widgets/tab-buttons.dart';
+import 'package:ziba_life_planner/widgets/notes.dart';
+import 'package:ziba_life_planner/widgets/tasks.dart';
+import 'package:ziba_life_planner/widgets/tags/month-tag.dart';
+import 'package:ziba_life_planner/widgets/tags/week-tag.dart';
+import 'package:ziba_life_planner/widgets/tags/day-tag.dart';
+import 'package:ziba_life_planner/widgets/tags/two-week-tag.dart';
+import 'package:ziba_life_planner/widgets/calendar.dart';
 
 class HomePage extends StatefulWidget {
   @override
