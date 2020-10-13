@@ -19,7 +19,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(
-        Duration(milliseconds: 5000),
+        Duration(milliseconds: 2000),
         () => Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (BuildContext context) => HomePage())));
     return SafeArea(

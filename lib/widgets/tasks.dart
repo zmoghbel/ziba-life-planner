@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ziba_life_planner/pages/add-task.dart';
 
 class Tasks extends StatefulWidget {
   @override
@@ -11,12 +12,13 @@ class _TasksState extends State<Tasks> {
     return ListView(
       children: [
         ListTile(
-          title: Text("Task 1........."),
-          leading: Icon(Icons.check_box),
+          title: Text("Add a new task"),
+          leading: Icon(Icons.add),
           onTap: () {
             setState(
               () {
-                print('Task 1 was tapped');
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (BuildContext context) => AddTask()));
               },
             );
           },
