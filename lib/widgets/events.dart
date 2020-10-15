@@ -8,9 +8,21 @@ class Events extends StatefulWidget {
 class _EventsState extends State<Events> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.teal,
-      child: Center(child: Text('EVENTS')),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        children: [
+          FlatButton.icon(
+            onPressed: () {
+              Navigator.pushNamed(context, '/add-event');
+            },
+            icon: Icon(
+              Icons.add_box_sharp,
+            ),
+            label: Text('Add a new event'),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'pages/splash-page.dart';
+import 'package:ziba_life_planner/pages/splash-page.dart';
+import 'package:ziba_life_planner/pages/add-event.dart';
+import 'package:ziba_life_planner/pages/home-page.dart';
+import 'package:ziba_life_planner/pages/add-task.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,7 +29,13 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashPage(),
+      //home: SplashPage(),
+      routes: {
+        '/': (context) => SplashPage(),
+        '/home-page': (context) => HomePage(),
+        '/add-task': (context) => AddTask(),
+        '/add-event': (context) => AddEvent(),
+      },
     );
   }
 }
